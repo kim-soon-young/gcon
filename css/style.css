@@ -50,10 +50,11 @@ body {
 .header {
   position: relative;
   display: block;
-  z-index: 9999;
+  z-index: 999999;
 }
 .header .pagew {
   width: 1360px;
+  /* background-color: blanchedalmond; */
 }
 .header-top {
   position: relative;
@@ -103,7 +104,6 @@ body {
   position: relative;
   display: block;
   float: right;
-  background: #101d41;
   padding: 0 10px;
 }
 
@@ -124,6 +124,7 @@ body {
   height: 10px;
   background: rgba(255, 255, 255, 0.3);
 }
+
 .h-help-list > li:first-child:before {
   content: none;
 }
@@ -140,17 +141,15 @@ body {
 }
 .lang:hover .country {
   display: block;
-  opacity: 1;
-  transition: all 0.3s;
 }
 .country {
-  display: none;
   position: absolute;
   left: 0;
   top: 4rem;
   width: calc(100% + 10px);
   background: #101d41;
   padding-bottom: 10px;
+  display: none;
 }
 .country > li {
   position: relative;
@@ -214,10 +213,10 @@ body {
 }
 .header-bottom .pagew {
   height: 65px;
-  background-color: beige;
+  background-color: bisque;
 }
 .logo-gnb {
-  position: relative;
+  position: absolute;
   top: 16px;
   left: 0;
   display: none;
@@ -251,14 +250,13 @@ body {
   color: #333;
   line-height: 6.5rem;
 }
-/* 호버했을 때 밑줄 */
 .mainmenu > li > a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   display: block;
-  width: 0%;
+  width: 100%;
   height: 3px;
   background: #ec008c;
   opacity: 0;
@@ -267,20 +265,20 @@ body {
 .mainmenu > li > a:hover {
   color: #ec008c;
 }
-.mainmenu > li > a:hover:after {
+.mainmenu > li > a:hover::after {
   opacity: 1;
-  width: 100%;
-  transition: all 0.3s;
 }
-/* depth 메뉴 */
+/* depth메뉴 */
 .submenu {
   position: absolute;
   top: 65px;
   left: 50%;
   transform: translateX(-50%);
+  display: block;
   width: 230px;
+  background-color: #fff;
 
-  /* 스크롤 생성 */
+  /* 스크롤생성 */
   max-height: 450px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -297,6 +295,12 @@ body {
   visibility: hidden;
   opacity: 0;
   top: 50px;
+  transition: all 0.3s;
+}
+.submenu_focus {
+  visibility: visible;
+  opacity: 1;
+  top: 65px;
 }
 .submenu > li {
   position: relative;
@@ -319,14 +323,21 @@ body {
   float: right;
   margin-top: 11px;
 }
-/* 3depth 메뉴 */
+.submenu_focus_link {
+  background-color: #ec008c;
+}
+.submenu_focus_link > a {
+  color: #fff;
+}
+/* 3 depth 메뉴 */
 .submenu-3rd {
   position: relative;
+  display: none;
   background-color: #efd3ec;
 }
 .submenu-3rd > li > a {
   position: relative;
-  display: none;
+  display: block;
   font-size: 1.4rem;
   line-height: 40px;
   padding: 0 10px;
@@ -334,7 +345,36 @@ body {
   transition: background 0.3s;
 }
 .submenu-3rd > li:hover > a {
-  background-color: #ffd3ec;
+  background-color: #f1c3ec;
+}
+/* Chrome, Safari용 스크롤 바 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border: 3px solid #fff;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 10px;
+  background-color: #efefef;
+}
+
+::-webkit-scrollbar-track {
+  background: #efefef;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  width: 50px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
 }
 .more-menu {
   position: absolute;
@@ -343,7 +383,7 @@ body {
   transform: translateY(-50%);
   display: block;
 }
-.more-menu li {
+.more-menu > li {
   position: relative;
   display: block;
   float: left;
@@ -357,7 +397,7 @@ body {
   position: relative;
   display: block;
   width: 24px;
-  height: 18px;
+  height: 19px;
 }
 .hm span {
   position: absolute;
@@ -365,7 +405,6 @@ body {
   height: 2px;
   display: block;
   background: #424242;
-
   transition: left 0.3s;
 }
 .hm span:nth-child(1) {
@@ -378,11 +417,11 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
 .hm span:nth-child(3) {
   left: 0;
   bottom: 0;
 }
-/*  햄버거 바 움직이기 */
 .hm:hover span:nth-child(1) {
   left: 4px;
 }
@@ -402,7 +441,7 @@ body {
 .search-bt i {
   vertical-align: 3px;
 }
-/* <!-- 서브메뉴에 호버했을 때 바탕화면 --> */
+/* <!-- 서브메뉴에 호버했을때 바탕화면 --> */
 .header-dim {
   display: none;
   position: fixed;
@@ -411,5 +450,5 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 999;
+  z-index: 99999;
 }
